@@ -42,6 +42,10 @@ local function build_extvars(opts)
 	local json_table = build_from_file(opts.extvar.from_file)
 	local merged_extvar = opts.extvar.values
 	merged_extvar = vim.tbl_deep_extend("force", opts.extvar.values, json_table or {})
+	if next(merged_extvar, nil) == nil then
+		-- Set the table to nil if it does not contain any values. Otherwise it gets converted to an array and the debugger fails
+		merged_extvar = nil
+	end
 	return merged_extvar
 end
 
