@@ -1,7 +1,7 @@
 local M = {}
 
 local default_config = {
-	debugger_binary = "jsonnet_debugger",
+	debugger_binary = "jsonnet-debugger",
 	debugger_args = { "--dap", "-s" },
 
 	extvar = {
